@@ -1,0 +1,196 @@
+/* --- Core Color Variable Themes --- */
+:root {
+    --bg-primary: #f4f6f9;
+    --bg-card: #ffffff;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+    
+    /* Light Mode Hero Configuration Settings */
+    --hero-overlay: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.85));
+    --hero-bg-img: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&auto=format&fit=crop&q=80');
+}
+
+/* --- Core Document Properties & Theme Selectors --- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Hero Section Cover Background --- */
+.hero-section {
+    /* Uses CSS variables to automatically swap background masks on theme toggles */
+    background: var(--hero-overlay), var(--hero-bg-img) no-repeat center center;
+    background-size: cover;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+/* --- Cards, Forms, and Content Containers Layouts --- */
+.card, 
+#about, 
+.bg-white,
+.contact-container {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-color) !important;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure text selectors adapt appropriately */
+h1, h2, h3, h4, h5, h6, .card-title, .fw-bold {
+    color: var(--text-main) !important;
+}
+
+.text-muted, p.text-muted, small.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* --- Fix Bootstrap Carousel Sizing & Dynamic Aspect Scaling --- */
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Semi-dark mask gradient overlay to guarantee text readability */
+.carousel-item::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.75) 100__);
+}
+
+.carousel-caption {
+    z-index: 5;
+}
+
+/* Ensure dynamic JS product items align cleanly inside card matrices */
+.card-img-top {
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.03);
+}
+
+/* --- Non-Bootstrap Contact Form Container Styling --- */
+.section-padding {
+    padding: 80px 0;
+    background-color: var(--bg-primary); /* Linked to variable theme */
+    transition: background-color 0.3s ease;
+}
+
+[data-theme="dark"] .section-padding {
+    background-color: #181818 !important;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffc107;
+}
+
+.search-btn {
+    background-color: #212529;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.search-btn:hover {
+    background-color: #424649;
+}
+
+/* Contact Section Extensions */
+.letter-spacing-1 {
+    letter-spacing: 1px;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.contact-icon-box {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+/* Enhancing standard Bootstrap Floating Labels styling to fit light backgrounds */
+.form-floating > .form-control:focus ~ label::after,
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after {
+    background-color: transparent !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25) !important;
+    background-color: var(--bg-card) !important;
+}
+
+/* Toggle custom alignment visual polish */
+.custom-toggle-switch {
+    cursor: pointer;
+}
+.custom-toggle-switch:checked {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+/* Footer Element Custom Adjustments */
+.hover-link:hover {
+    color: #ffc107 !important;
+    text-decoration: underline !important;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    line-height: 38px;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.social-icon:hover {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
